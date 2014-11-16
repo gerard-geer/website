@@ -34,7 +34,7 @@ a.nav:visited
 a.nav:hover
 {
 	text-decoration:none;
-	box-shadow: 1px 1px 2px #aaaaaa;
+	box-shadow: 0px 0px 2px #aaaaaa;
 }
 a.nav:active
 {
@@ -74,6 +74,13 @@ canvas
 	font-size: 3pc;
 	margin: auto auto auto auto;
 	font-weight: bold;
+	text-decoration: none;
+	padding-bottom: 5px;
+}
+
+#title:hover
+{
+	text-shadow: 0px 0px 2px #aaaaaa;
 }
 
 div.button_container
