@@ -1,15 +1,20 @@
 // The ID of the nav-bar loading interval.
 var navBarLoadID;
 
+// The length of each frame of animation, in milliseconds.
+frameTime = 15;
+// The number of frames the animation lasts.
+duration = 30;
+
 // The X location of each of the lines. They are subtly offset from each other.
 var x1 = 0;
 var x2 = 5;
 var x3 = 10;
 
 // The per-frame delta of the length of the line.
-var lineDrawingDelta1 = ((window.width)/30);
-var lineDrawingDelta2 = ((window.width-10)/30);
-var lineDrawingDelta3 = ((window.width-20)/30);
+var lineDrawingDelta1 = ((window.width)/duration);
+var lineDrawingDelta2 = ((window.width-10)/duration);
+var lineDrawingDelta3 = ((window.width-20)/duration);
 
 // The interval used to animate the navigation bar art.
 var interval;
@@ -17,20 +22,45 @@ var interval;
 // The canvas and rendering context.
 var canvas, ctx;
 
-// Creates an animation interval for the nav-bar html5 canvas.
-function loadNavbar(callback)
+// Creates an animation interval for the navbar html5 canvas.
+function initNavbar()
 {
 	// Extract the canvas and get a rendering context.
 	canvas=document.getElementById("nav_canvas");
 	ctx=canvas.getContext("2d");
+}
 
+// Expands the navbar.
+function expandNavbar(callback)
+{
 	// Set the rendering interval.
-	interval = setInterval(function(){drawLines(callback);}, 15);
+	interval = setInterval(function(){
+		drawLines();
+		if(!incrementLines())
+		{
+			clearInterval(interval);
+			callback();
+		}
+	}, frameTime);
+}
+
+// Retracts the navbar.
+function retractNavbar(callback)
+{
+	// Set the rendering interval.
+	interval = setInterval(function(){
+		drawLines();
+		if(!decrementLines())
+		{
+			clearInterval(interval);
+			callback();
+		}
+	}, frameTime);
 }
 
 
 // Draws the lines. What do you expect.
-function drawLines(callback)
+function drawLines()
 {
 
 	//First line.
@@ -56,19 +86,31 @@ function drawLines(callback)
 	ctx.moveTo(10, 15);
 	ctx.lineTo(x3, 15);
 	ctx.stroke();
+}
 
+// Decrements the lines.
+function decrementLines()
+{
+	// Increment length values if we haven't yet reached our target length.
+	if(x1>lineDrawingDelta1)
+	{
+		x1 = x1-lineDrawingDelta1;
+		x2 = x2-lineDrawingDelta2;
+		x3 = x3-lineDrawingDelta3;
+		return true;
+	}
+	else return false;
+}
+
+function incrementLines()
+{
 	// Increment length values if we haven't yet reached our target length.
 	if(x1<window.width-lineDrawingDelta1)
 	{
 		x1 = x1+lineDrawingDelta1;
 		x2 = x2+lineDrawingDelta2;
 		x3 = x3+lineDrawingDelta3;
+		return true;
 	}
-
-	// Otherwise we clear the interval.
-	else
-	{
-		clearInterval(interval);
-		callback();
-	}
+	else return false;
 }

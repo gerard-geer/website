@@ -1,11 +1,12 @@
-// The array of internal facing buttons.
-var buttons;
+// The array of internal facing links.
+var links;
 
 // The onclick button functionality.
-function buttonOnClick()
+function buttonOnClick(button)
 {
-	// Retract the navbar.
-	retractNavbar(function(){window.location.href=this.url;});
+	// Retract the navbar. Notice that we use the url element
+	// added in initButtons().
+	retractNavbar(function(){window.location.href=button.url;});
 	
 	// Fade out the page.
 	$(window).fadeOut(duration*frameTime);
@@ -25,7 +26,7 @@ function initButtons()
 	// onclick function. Also add it to the button array.
 	$(".button").each(function(index){
 		this.url = this.attr("href");
-		this.on("click", buttonOnClick);
+		this.click(function(){buttonOnClick(this);});
 		buttons.push(this);
 		this.fadeIn(duration*frameTime);
 	});

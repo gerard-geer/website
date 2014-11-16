@@ -5,23 +5,7 @@ body
 	color: #333333;
 }
 
-h1
-{
-	font-size: 2.5pc;
-	font-family:Helvetica;
-	text-shadow: 1px 1px #cccccc;
-	color: #2295cc;
-}
-
-h2
-{
-	font-size: 2pc;
-	font-family:Helvetica;
-	text-shadow: 1px 1px #cccccc;
-	color: #ff7b00;
-}
-
-button, a.external
+a
 {
 	opacity: 0.0;
 	background-color: #ffffff;
@@ -68,7 +52,6 @@ canvas
 	display: block;
 	margin: 7px auto 10px auto;
 }
-
 
 #vertical_centerer
 {
