@@ -2,8 +2,8 @@
 <head>
 	<link rel='stylesheet' type='text/css' href='css/index.css'>
 	<script type='text/javascript' src='js/jquery.js'></script>
-	<script type='text/javascript' src='js/main.js'></script>
 	<script type='text/javascript' src='js/navbar.js'></script>
+	<script type='text/javascript' src='js/main.js'></script>
 	<title>Blagoblag | Projects</title>
 	<meta name='viewport' content='width=700'>
 </head>
@@ -13,7 +13,7 @@
 		<!-- Contains the header text and a bunch of navigation buttons. -->
 		<div class='button_container container' id='top_button_container'>
 			<!-- Title Text -->
-			<p id='title'>Gerard's Blagoblag</p>
+			<a class='internal' id='title' href='index.html'>Gerard's Blagoblag</a>
 			<!-- Navigation links -->
 			<a class='internal' href='projects.html' id='projects'>Projects/Articles</a>
 			<a class='external' target='_blank' href='https://www.github.com/gerard-geer' id='github'>Github</a>
@@ -30,11 +30,11 @@
 			<div class='content'>
 				<h1>3D Floor Map</h1>
 				<p>WebGL is fun beans. Since it is in essence just a JavaScript object it doesn't have
-				all the idiosyncrasies that traditional OpenGL implementations. There isn't multiple editions
-				of GLSL to contend with, no worries about capabilities between cards and OpenGL revisions, 
-				and no clunkiness in loading shaders and textures. However, to accomplish such a great feat
+				all the idiosyncrasies that traditional OpenGL implementations. There aren't multiple editions
+				of GLSL to contend with, relaxed worries about capabilities between cards and OpenGL revisions, 
+				and stifled clunkiness in loading shaders and textures. However, to accomplish such a great feat
 				of platform independence it has to dip its capabilities to nearly the least common denominator
-				of hardware.</p>
+				of hardware. (and impose limitations that greatly affect this project, as spoken of later.)</p>
 				<p>What I've made here is a 3D floor map of my dormitory floor at RIT. You click on a room, and
 				info about that room pops up in a small dialog. Some rooms and other entities have links in their
 				info that take you to relevant information, right there in the map.

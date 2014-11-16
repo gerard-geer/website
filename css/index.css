@@ -1,5 +1,6 @@
 body
 {
+	display: none;
 	font-family: Helvetica;
 	text-shadow: 1px 1px 2px #eeeeee;
 	color: #333333;
@@ -7,7 +8,6 @@ body
 
 a
 {
-	opacity: 0.0;
 	background-color: #ffffff;
 	color: #333333;
 	
@@ -57,17 +57,20 @@ canvas
 {
 	float: center;
 	height: 50%;
-	margin-bottom: -40px;
+	margin-bottom: -100px;
 }
+
 #horizontal_centerer
 {	
 	text-align: center;
 	float: center;
+	
 }
 
 #title
 {
-	opacity: 0.0;
+	display:block;
+	border: none;
 	color: #2295cc;
 	font-size: 3pc;
 	margin: auto auto auto auto;
@@ -81,56 +84,11 @@ div.button_container
 	padding: auto auto auto auto;
 }
 
+div.content_container
+{
+}
+
 div.content
 {
-	display: none;
 	padding: 10px 10px 10px 10px;
-}
-
-div.project
-{
-	display: none;
-}
-
-div.image_text
-{
-	font-size: 12px;
-	margin: 5px auto 5px auto;
-}
-
-div.image
-{
-	display: block;
-	text-align: center;
-	width: auto;
-	height: auto;
-}
-
-div.video
-{
-	display:block;
-	text-align: center;
-}
-
-#top_content_container
-{
-	float: center;
-	text-align: left;
-	display: none;
-	width: 650px;
-	
-	margin: auto;
-	
-	
-	border-left-style: ridge;
-	border-right-style: ridge;
-	border-left-color: #ff7b00;
-	border-right-color: #00d4ff;
-	border-radius:18px;
-	-moz-border-radius:25px;
-}
-
-#default_project_text
-{
-	display: block;
 }
