@@ -2,8 +2,19 @@ body
 {
 	display: none;
 	font-family: Helvetica;
+	font-size: 1.05em;
 	text-shadow: 1px 1px 2px #eeeeee;
 	color: #333333;
+}
+
+h1
+{
+	color: #2295cc;
+}
+
+h2
+{
+	color: #ff7b00;
 }
 
 a.nav
@@ -101,5 +112,13 @@ div.content_container
 
 div.content
 {
+	text-align: left;
 	padding: 10px 10px 10px 10px;
+	
+	border-left-style: ridge;
+	border-right-style: ridge;
+	border-left-color: #ff7b00;
+	border-right-color: #00d4ff;
+	border-radius: 18px;
+	-moz-border-radius: 25px;
 }

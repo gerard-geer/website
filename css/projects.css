@@ -1,0 +1,28 @@
+#projects
+{
+	text-align: center;
+}
+
+.image_text 
+{
+	font-size: .8em;
+	
+	padding: 10px;
+}
+
+.image_and_text
+{
+	border-left-style: ridge;
+	border-right-style: ridge;
+	border-color: #ffffff;
+	border-radius: 8px;
+	-moz-border-radius: 18px;
+}
+
+.image
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
