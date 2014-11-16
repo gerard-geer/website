@@ -56,45 +56,45 @@
 				Eidos' cult-classic game Whiplash had with their map display, but with a bit more detail and 
 				interactivity.) To accomplish this the rendering methodology the map uses has several steps. (On
 				part of WebGL's lack of MRT support.)
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/idPass.png" target="_blank"><img src="img/prj/map/small/idPass.png" alt="Render pass of the ID model" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/idPass.png target='_blank'><img src='img/prj/map/small/idPass.png' alt='Render pass of the ID model' width='400' height='400'></a>
 					</div>
 					Render the ID model into a framebuffer, and store it until later.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/diffusePass.png" target="_blank"><img src="img/prj/map/small/diffusePass.png" alt="Render pass of the diffuse model" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/diffusePass.png' target='_blank'><img src='img/prj/map/small/diffusePass.png' alt='Render pass of the diffuse model' width='400' height='400'></a>
 					</div>
 					Render the diffuse model into a framebuffer, and store it until later.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/normalPass.png" target="_blank"><img src="img/prj/map/small/normalPass.png" alt="Render pass to store surface normals of the model" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/normalPass.png' target='_blank'><img src='img/prj/map/small/normalPass.png' alt='Render pass to store surface normals of the model' width='400' height='400'></a>
 					</div>
 					Use GLSL's dFdx() dFdy() functions to render the surface normals of the diffuse 
 					model, into another framebuffer.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/depthPass.png" target="_blank"><img src="img/prj/map/small/depthPass.png" alt="Render pass to store the depth values of the model" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/depthPass.png' target='_blank'><img src='img/prj/map/small/depthPass.png' alt='Render pass to store the depth values of the model' width='400' height='400'></a>
 					</div>
 					Render the depth of the diffuse model into a framebuffer. Notice now that we have 
 					all of the viewport-visible data of the model in image-space. (Including the earlier 
 					rendering of the ID model.)
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/wireframePass.png" target="_blank"><img src="img/prj/map/small/wireframePass.png" alt="The creation of the wire-frame" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/wireframePass.png' target='_blank'><img src='img/prj/map/small/wireframePass.png' alt='The creation of the wire-frame' width='400' height='400'></a>
 					</div>
 					Next we apply a Sobel filter to the ID, normal, and depth renders. If the value of any of these 
 					at a given texel is above a certain threshhold, it is stepped up to 1 and stored in its own 
@@ -103,29 +103,29 @@
 					room is highlighted.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/normalDrawback.png" target="_blank"><img src="img/prj/map/small/normalDrawback.png" alt="Drawback of using the normal pass to detect edges" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/normalDrawback.png' target='_blank'><img src='img/prj/map/small/normalDrawback.png' alt='Drawback of using the normal pass to detect edges' width='400' height='400'></a>
 					</div>
 					It is important to note that certain edges are not visible in either the ID, diffuse, 
 					or normal passes. To detect these edges, we must also use the depth pass when generating the wireframe.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/blurPass.png" target="_blank"><img src="img/prj/map/small/blurPass.png" alt="Blurring the wire-frame" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/blurPass.png' target='_blank'><img src='img/prj/map/small/blurPass.png' alt='Blurring the wire-frame' width='400' height='400'></a>
 					</div>
 					Render the wire-frame pass, horizontally Gaussian blurred, into yet another framebuffer, then 
 					Take the horizontally blurred rendering, blur it vertically, and store it into 
 					<i>yet another</i> framebuffer.
 					</p>
 				</div>
-				<div class="image_text">		
+				<div class='image_text'>		
 					<p>
-					<div class="image">
-					<a href="img/prj/map/full/compositePass.png" target="_blank"><img src="img/prj/map/small/compositePass.png" alt="The final composited frame" width="400" height="400"></a>
+					<div class='image'>
+					<a href='img/prj/map/full/compositePass.png' target='_blank'><img src='img/prj/map/small/compositePass.png' alt='The final composited frame' width='400' height='400'></a>
 					</div>
 					Combine the original rendering of the diffuse model with the unadulterated wire-frame pass,
 					and the blurred wire-frame pass. This final addition of buffers is what is displayed to the screen.

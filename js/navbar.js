@@ -4,7 +4,7 @@ var navBarLoadID;
 // The length of each frame of animation, in milliseconds.
 var frameTime = 15;
 // The number of frames the animation lasts.
-var duration = 30;
+var duration = 20;
 
 // The X location of each of the lines. They are subtly offset from each other.
 var x1 = 0;
