@@ -18,19 +18,43 @@ var interval;
 var canvas, ctx;
 
 // Creates an animation interval for the nav-bar html5 canvas.
-function loadNavbar(callback)
+function loadNavbar()
 {
 	// Extract the canvas and get a rendering context.
 	canvas=document.getElementById("nav_canvas");
 	ctx=canvas.getContext("2d");
+}
 
+function expandNavbar(callback)
+{
 	// Set the rendering interval.
-	interval = setInterval(function(){drawLines(callback);}, 15);
+	interval = setInterval(function(){
+		drawLines();
+		if(!incrementLines())
+		{
+			clearInterval(interval);
+			callback();
+		}
+	}, 15);
+}
+
+// Retracts the navbar.
+function retractNavbar(callback)
+{
+	// Set the rendering interval.
+	interval = setInterval(function(){
+		drawLines();
+		if(!decrementLines())
+		{
+			clearInterval(interval);
+			callback();
+		}
+	}, 15);
 }
 
 
 // Draws the lines. What do you expect.
-function drawLines(callback)
+function drawLines()
 {
 
 	//First line.
@@ -56,19 +80,31 @@ function drawLines(callback)
 	ctx.moveTo(10, 15);
 	ctx.lineTo(x3, 15);
 	ctx.stroke();
+}
 
+// Decrements the lines.
+function decrementLines()
+{
+	// Increment length values if we haven't yet reached our target length.
+	if(x1>lineDrawingDelta1)
+	{
+		x1 = x1-lineDrawingDelta1;
+		x2 = x2-lineDrawingDelta2;
+		x3 = x3-lineDrawingDelta3;
+		return true;
+	}
+	else return false;
+}
+
+function incrementLines()
+{
 	// Increment length values if we haven't yet reached our target length.
 	if(x1<window.width-lineDrawingDelta1)
 	{
 		x1 = x1+lineDrawingDelta1;
 		x2 = x2+lineDrawingDelta2;
 		x3 = x3+lineDrawingDelta3;
+		return true;
 	}
-
-	// Otherwise we clear the interval.
-	else
-	{
-		clearInterval(interval);
-		callback();
-	}
+	else return false;
 }
