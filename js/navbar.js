@@ -112,7 +112,7 @@ function decrementLines()
 function incrementLines()
 {
 	// Increment length values if we haven't yet reached our target length.
-	if(x1<canvas.width-lineDrawingDelta1)
+	if(x1<canvas.width)
 	{
 		x1 = x1+lineDrawingDelta1;
 		x2 = x2+lineDrawingDelta2;
