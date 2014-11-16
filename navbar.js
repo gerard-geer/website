@@ -1,15 +1,20 @@
 // The ID of the nav-bar loading interval.
 var navBarLoadID;
 
+// The length of each frame of animation, in milliseconds.
+var frameTime = 15;
+// The number of frames the animation lasts.
+var duration = 30;
+
 // The X location of each of the lines. They are subtly offset from each other.
 var x1 = 0;
 var x2 = 5;
 var x3 = 10;
 
 // The per-frame delta of the length of the line.
-var lineDrawingDelta1 = ((window.width)/30);
-var lineDrawingDelta2 = ((window.width-10)/30);
-var lineDrawingDelta3 = ((window.width-20)/30);
+var lineDrawingDelta1 = ((window.width)/duration);
+var lineDrawingDelta2 = ((window.width-10)/duration);
+var lineDrawingDelta3 = ((window.width-20)/duration);
 
 // The interval used to animate the navigation bar art.
 var interval;
@@ -17,7 +22,7 @@ var interval;
 // The canvas and rendering context.
 var canvas, ctx;
 
-// Creates an animation interval for the nav-bar html5 canvas.
+// Creates an animation interval for the navbar html5 canvas.
 function loadNavbar()
 {
 	// Extract the canvas and get a rendering context.
@@ -25,6 +30,7 @@ function loadNavbar()
 	ctx=canvas.getContext("2d");
 }
 
+// Expands the navbar.
 function expandNavbar(callback)
 {
 	// Set the rendering interval.
@@ -35,7 +41,7 @@ function expandNavbar(callback)
 			clearInterval(interval);
 			callback();
 		}
-	}, 15);
+	}, frameTime);
 }
 
 // Retracts the navbar.
@@ -49,7 +55,7 @@ function retractNavbar(callback)
 			clearInterval(interval);
 			callback();
 		}
-	}, 15);
+	}, frameTime);
 }
 
 

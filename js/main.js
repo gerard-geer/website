@@ -1,82 +1,45 @@
-var centered = true;
+// The array of internal facing buttons.
+var buttons;
 
-var clicked = false;
-
-var animTime = 250;
-
-var currentContent;
-
-
-function removeContent(content, callback)
+// The onclick button functionality.
+function buttonOnClick()
 {
-	content.fadeOut(animTime, callback);
-}
-
-function addContent(content, callback)
-{
-	content.fadeIn(animTime, callback);
-}
-
-function onInternalClick()
-{
-	if(clicked) return;
-	clicked = true;
+	// Retract the navbar.
+	retractNavbar(function(){window.location.href=this.url;});
 	
-	// Get the ID of the content being pointed to by the button.
-	var targetID = $(this).attr('id');
+	// Fade out the page.
+	$(window).fadeOut(duration*frameTime);
 	
-	console.log(this);
-	
-	// Get the relevant content container for the content.
-	var contentContainer = $(this).closest('.button_container').next('.content_container');
-	
-	// Get the target content.
-	var targetContent = contentContainer.children('#'+targetID).first();
-	
-	// If the nav bar is still centered as when first visiting, 
-	// we have to do that animation. On the plus side, we can know
-	// that there is no content that we yet need to remove.
-	if(centered)
+	// Remove button handlers from all other buttons, since we don't
+	// want to screw with race conditions.
+	for(i = 0; i < internalButtons.length; ++i)
 	{
-		var centerer = $('#vertical_centerer');
-		centerer.animate({height: '10%'}, animTime, function(){
-			centered = false;
-			addContent($('#top_content_container'), function(){
-				addContent(targetContent, function(){clicked = false;});
-				currentContent = targetContent;
-			});
-		});
+		buttons[i].on("click", function(){});
 	}
-	// Otherwise we just remove the content and add the new.
-	else
-	{
-		removeContent(targetContent.siblings('#'+currentContent.attr('id')), function()
-		{
-			addContent(targetContent, function(){clicked = false;});
-			currentContent = targetContent;
-		});
-	}	
 }
 
-function onProjectClick()
+// Initializes button callbacks.
+function initButtons()
 {
-	console.log("project");
-	
+	// Take each button and add a url element and set the
+	// onclick function. Also add it to the button array.
+	$(".button").each(function(index){
+		this.url = this.attr("href");
+		this.on("click", buttonOnClick);
+		buttons.push(this);
+		this.fadeIn(duration*frameTime);
+	});
 }
 
-function onExternalClick()
-{
-	window.open($(this).attr('target'), '_blank');
-}
-
+// Initializes the page.
 function init()
 {
+	// Create the button array.
+	internalButtons = [];
 	
-	loadNavbar(function(){
-		$('button').fadeTo(animTime, 1.0, function(){
-			$('button.internal').click(onInternalClick);
-		});
-		$('a').fadeTo(animTime, 1.0);
-		$('#title').fadeTo(animTime, 1.0);
-	});
+	// Fade in the page.
+	$(window).fadeIn(duration*frameTime);
+	
+	// Start the navbar animation, initializing the buttons upon completion.
+	expandNavbar(function(){initButtons();});
 }
