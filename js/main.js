@@ -4,6 +4,10 @@ var links;
 // The onclick button functionality.
 function buttonOnClick(e)
 {
+	// If this is not the left mouse button we return without doing anything,
+	// effectvely only enabling this event handler on standard clicks.
+	if(event.which != 1) return;
+	
 	e.preventDefault();
 	
 	var url = $(this).attr("href");
