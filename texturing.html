@@ -29,12 +29,12 @@
 		<div class='content_container container' id='top_content_container'>
 			<div class='content'>
 				<h1>Texture sampling</h1>
-				<p>Let's say you have a texel of geometry in 3D space, with no implicit
-				surface normal or texture coordinates, such as one would expect in ray-marching.
+				<p>Let's say you have a fragment of geometry in 3D space, with no implicit
+				surface normal or texture coordination, such as one would expect in ray-marching.
 				How does one texture this element in a manner that allows for the texture image
 				to flow over curved geometry? The answer lies in realizing that 3D surfaces exist
 				in any combination of three 2D planes: xy, xz, and yz. Allow me to explain.</p>
-				<p>First we need to translate our texel to be of origin from the center of its
+				<p>First we need to translate our fragment to be of origin from the center of its
 				parent marched primitive, to prevent inconsistencies in primitive positioning.</p>
 				<div class='image_and_text'>		
 					<p>
@@ -42,7 +42,7 @@
 					<a href='img/prj/texturing/full/trans.png' target='_blank'><img src='img/prj/texturing/small/trans.png' alt='Translating the texel' width='600'></a>
 					</div>
 						<div class='image_text'>
-						Where <i>P</i> is either the position of the texel or the position 
+						Where <i>P</i> is either the position of the fragment or the position 
 						of the primitive.
 						</div>
 					</p>
@@ -50,8 +50,8 @@
 				<p>This leaves us with a 3D texture coordinate. But wait, we need to use ~2 of
 				them to determine where to sample our texture at. How do we decide which ones to
 				use?</p>
-				<p>The answer lies in the surface normal at the texel. The surface normal encodes
-				in which combination of 2D planes the texel exists in. Allow me to illustrate:</p>
+				<p>The answer lies in the surface normal at the fragment. The surface normal encodes
+				in which combination of 2D planes the fragment exists in. Allow me to illustrate:</p>
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
@@ -63,12 +63,12 @@
 						</div>
 					</p>
 				</div>
-				<p>Looking at this diagram it's easy to recognize that if a texel's normal is entirely
+				<p>Looking at this diagram it's easy to recognize that if a fragment's normal is entirely
 				in the X direction, its surface exists in the YZ plane, and likewise for the other
 				two axes.</p>
 				<p>Now that we've seen how a 3D surface exists (as said before) in any combination of
 				the XY, XZ, and YZ planes, it's important that to see that we must now sample the 2D
-				texture three times for each texel--once for each plane--and interpolate them based on
+				texture three times for each fragment--once for each plane--and interpolate them based on
 				the surface's presence in each of the three planes.</p>
 				<div class='image_and_text'>		
 					<p>
@@ -76,8 +76,8 @@
 					<a href='img/prj/texturing/full/lerp.png' target='_blank'><img src='img/prj/texturing/small/lerp.png'alt='interpolation function' width='600'></a>
 					</div>
 						<div class='image_text'>
-						Where <i>C</i> is the final color of the texel, <i>tex</i> is the texture 
-						sampling function, <i>P</i> is the normalized texel position, and <i>N</i>
+						Where <i>C</i> is the final color of the fragment, <i>tex</i> is the texture 
+						sampling function, <i>P</i> is the normalized fragment position, and <i>N</i>
 						is the surface normal.
 						</div>
 					</p>
