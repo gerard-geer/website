@@ -31,3 +31,12 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.code_snipppet
+{
+	font: "Lucidia Console", monospace;
+	color: #000000;
+	background-color: #aaaabb; 
+	border-radius: 8px;
+	-moz-border-radius: 18px;
+}
