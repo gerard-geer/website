@@ -1,6 +1,3 @@
-// The array of internal facing links.
-var links;
-
 // The onclick button functionality.
 function buttonOnClick(e)
 {
@@ -10,8 +7,12 @@ function buttonOnClick(e)
 	
 	e.preventDefault();
 	
+	// Get the url of the link.
 	var url = $(this).attr("href");
+	// Retract the navbar, and upon completion navigate to the
+	// link's reference.
 	retractNavbar(function(){window.location.href=url;});
+	// Oh we also fade out the content.
 	$("body").fadeOut(duration*frameTime);
 	
 	// Fade out the page.
