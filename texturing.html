@@ -5,7 +5,7 @@
 	<script type='text/javascript' src='js/jquery.js'></script>
 	<script type='text/javascript' src='js/navbar.js'></script>
 	<script type='text/javascript' src='js/main.js'></script>
-	<title>Projects | S.O.A.P.</title>
+	<title>Articles | 3D Texturing</title>
 	<meta name='viewport' content='width=700'>
 </head>
 <body onload='init()'>
@@ -80,6 +80,21 @@
 						sampling function, <i>P</i> is the normalized fragment position, and <i>N</i>
 						is the surface normal.
 						</div>
+					</p>
+				</div>
+				<p>Example code for this technique would look something like this (in GLSL):</p>
+				<div class='code_snippet'>
+					<p>
+					/* <br>
+					&nbsp;&nbsp;Takes a 3D coordinate, and returns a texel based on which plane(s)<br>
+					&nbsp;&nbsp;it lies in.<br>
+					*/<br>
+					vec3 tex3D( in vec3 pos, in vec3 normal, in sampler2D sampler )<br>
+					{<br>
+					&nbsp;&nbsp;return 	texture2D( sampler, pos.yz ).rgb*abs(normal.x)+ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;texture2D( sampler, pos.xz ).rgb*abs(normal.y)+ <br>
+					&nbsp;&nbsp;&nbsp;&nbsp;texture2D( sampler, pos.xy ).rgb*abs(normal.z);<br>
+					}<br>
 					</p>
 				</div>
 			</div>

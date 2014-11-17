@@ -32,11 +32,13 @@
 	margin-right: auto;
 }
 
-.code_snipppet
+.code_snippet
 {
-	font: "Lucidia Console", monospace;
+	font-family: "Lucidia Console", monospace;
+	font-size: .8em;
 	color: #000000;
-	background-color: #aaaabb; 
+	background-color: #ccccff; 
+	padding: 4px 8px 4px 8px;
 	border-radius: 8px;
 	-moz-border-radius: 18px;
 }
