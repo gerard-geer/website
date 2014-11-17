@@ -106,7 +106,7 @@ function decrementLines()
 		x3 = x3-lineDrawingDelta3;
 		return true;
 	}
-	else return false;
+	return false;
 }
 
 function incrementLines()
@@ -119,8 +119,5 @@ function incrementLines()
 		x3 = x3+lineDrawingDelta3;
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+	return false;
 }
