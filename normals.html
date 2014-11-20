@@ -68,9 +68,12 @@
 					}<br>
 					</p>
 				</div>
-				<p>That's more expensive, but fathoms more pleasant to read.To understand what's going on
-				here, let's step down into two dimensions. Here's a point that we've marched to the 
-				surface of a distance function.</p>
+				<p>That's more expensive, but fathoms more pleasant to read. First, some clarification.
+				This function relies on some predefined tokens. EPSILON is the maximum acceptable distance
+				threshold, and getDist() is the distance function. Normalize() is a built-in to normalize
+				a vector type.
+				To understand what's going on here, let's step down into two dimensions and draw pictures. 
+				Here's a point that we've marched to the surface of a distance function.</p>
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
@@ -85,7 +88,7 @@
 				</div>
 				<p>Now remember that point does not exist
 				exactly upon the surface, but rather has been marched to within a minimum distance (that we 
-				call epsilon) of the distance function So if we zoom in by a great amount...</p>
+				call epsilon) of the distance function. So if we zoom in by a great amount...</p>
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
@@ -198,6 +201,20 @@
 						</div>
 					</p>
 				</div>
+				<p>An interesting facet of this technique is the fact that we sample distances
+				to surface points that are not that of the original. This requires that the region
+				being sampled has negligible change in gradient for accurate results. Therefore,
+				if epsilon were large enough to span a significant change in slope, the results
+				of this technique would be garbled.</p>
+				<p>Epsilon, or the maximum acceptable distance, is always linked to the
+				accuracy of spacial representation. This technique then, with its above downfall,
+				additionally ties epsilon's precision with the accuracy of scene lighting and
+				any other effect that relies upon accurate surface orientation.</p>
+				<p>Something else to think about: What if the original distance was 0.0, and our 
+				original point actually did exist upon the geometry? What if the gradient between
+				sample positions was guaranteed to be linear, or at least guaranteed to be safe
+				to assume so? What if we were using traditional rendering techniques, and were
+				working with real fragments with access to dfdx() and dfdy()? What if?</p>
 			</div>
 		</div>
 	</div>
