@@ -49,9 +49,9 @@
 					</p>
 				</div>
 				<p>This leaves us with a 3D texture coordinate. But wait, we need to use ~2 of
-				them to determine where to sample our texture at. How do we decide which ones to
+				them to determine where to sample our texture at! How do we decide which ones to
 				use?</p>
-				<p>The answer lies in the surface normal at the fragment. The surface normal encodes
+				<p>To do this we use the surface normal. The surface normal encodes
 				in which combination of 2D planes the fragment exists in. Allow me to illustrate:</p>
 				<div class='image_and_text'>		
 					<p>
@@ -68,9 +68,9 @@
 				in the X direction, its surface exists in the YZ plane, and likewise for the other
 				two axes.</p>
 				<p>Now that we've seen how a 3D surface exists (as said before) in any combination of
-				the XY, XZ, and YZ planes, it's important that to see that we must now sample the 2D
+				the XY, XZ, and YZ planes, it's important that to note that we now sample the 2D
 				texture three times for each fragment--once for each plane--and interpolate them based on
-				the surface's presence in each of the three planes.</p>
+				the surface's presence in each of the planes.</p>
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
