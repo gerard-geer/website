@@ -40,32 +40,32 @@
 				time-heavy operations. Then I stumbled upon this gem.</p>
 				<div class='code_snippet'>
 					<p>
-					/*
-					&nbsp;&nbsp;Returns the surface normal of a point in the distance function.
-					*/
-					vec3 getNormal(vec3 pos)
-					{
-					&nbsp;&nbsp;float d=getDist(pos);
-					&nbsp;&nbsp;return normalize(vec3( getDist(pos+vec3(EPSILON,0,0))-d, getDist(pos+vec3(0,EPSILON,0))-d, getDist(pos+vec3(0,0,EPSILON))-d ));
-					}
+					/*<br>
+					&nbsp;&nbsp;Returns the surface normal of a point in the distance function.<br>
+					*/<br>
+					vec3 getNormal(vec3 pos)<br>
+					{<br>
+					&nbsp;&nbsp;float d=getDist(pos);<br>
+					&nbsp;&nbsp;return normalize(vec3( getDist(pos+vec3(EPSILON,0,0))-d, getDist(pos+vec3(0,EPSILON,0))-d, getDist(pos+vec3(0,0,EPSILON))-d ));<br>
+					}<br>
 					</p>
 				</div>
 				<p>Whoa, what is this mess? Let's refactor it for readability.</p>
 				<div class='code_snippet'>
 					<p>
-					/*
-					&nbsp;&nbsp;Returns the surface normal of a point in the distance function.
-					*/
-					vec3 getNormal(vec3 pos)
-					{
-					&nbsp;&nbsp;float c=getDist(pos);
-					&nbsp;&nbsp;vec3 n = vec3();
-					&nbsp;&nbsp;n.x = getDist( pos+vec3(EPSILON,0,0) );
-					&nbsp;&nbsp;n.y = getDist( pos+vec3(0,EPSILON,0) );
-					&nbsp;&nbsp;n.z = getDist( pos+vec3(0,0,EPSILON) );
-					&nbsp;&nbsp;n - c;
-					&nbsp;&nbsp;return normalize(n);
-					}
+					/*<br>
+					&nbsp;&nbsp;Returns the surface normal of a point in the distance function.<br>
+					*/<br>
+					vec3 getNormal(vec3 pos)<br>
+					{<br>
+					&nbsp;&nbsp;float c=getDist(pos);<br>
+					&nbsp;&nbsp;vec3 n = vec3();<br>
+					&nbsp;&nbsp;n.x = getDist( pos+vec3(EPSILON,0,0) );<br>
+					&nbsp;&nbsp;n.y = getDist( pos+vec3(0,EPSILON,0) );<br>
+					&nbsp;&nbsp;n.z = getDist( pos+vec3(0,0,EPSILON) );<br>
+					&nbsp;&nbsp;n - c;<br>
+					&nbsp;&nbsp;return normalize(n);<br>
+					}<br>
 					</p>
 				</div>
 				<p>That's more expensive, but fathoms more pleasant to read.To understand what's going on
@@ -74,8 +74,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/marchedpoint.png' target='_blank'>
-						<img src='img/prj/texturing/small/marchedpoint.png'alt='marched point' width='600'>
+					<a href='img/prj/normals/full/marchedpoint.png' target='_blank'>
+						<img src='img/prj/normals/small/marchedpoint.png'alt='marched point' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -89,8 +89,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/zoomedpoint.png' target='_blank'>
-						<img src='img/prj/texturing/small/zoomedpoint.png'alt='zoomed on point' width='600'>
+					<a href='img/prj/normals/full/zoomedpoint.png' target='_blank'>
+						<img src='img/prj/normals/small/zoomedpoint.png'alt='zoomed on point' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -107,8 +107,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/sampledatx.png' target='_blank'>
-						<img src='img/prj/texturing/small/sampledatx.png'alt='sampling along the x axis' width='600'>
+					<a href='img/prj/normals/full/sampledatx.png' target='_blank'>
+						<img src='img/prj/normals/small/sampledatx.png'alt='sampling along the x axis' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -121,8 +121,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/subtractedx.png' target='_blank'>
-						<img src='img/prj/texturing/small/subtractedx.png'alt='subtracting original dist' width='600'>
+					<a href='img/prj/normals/full/subtractedx.png' target='_blank'>
+						<img src='img/prj/normals/small/subtractedx.png'alt='subtracting original dist' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -135,8 +135,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/sampledaty.png' target='_blank'>
-						<img src='img/prj/texturing/small/sampledaty.png'alt='sampling along the y axis' width='600'>
+					<a href='img/prj/normals/full/sampledaty.png' target='_blank'>
+						<img src='img/prj/normals/small/sampledaty.png'alt='sampling along the y axis' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -149,8 +149,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/lerp.png' target='_blank'>
-						<img src='img/prj/texturing/small/lerp.png'alt='subtracting original dist' width='600'>
+					<a href='img/prj/normals/full/subtractedy.png' target='_blank'>
+						<img src='img/prj/normals/small/subtractedy.png'alt='subtracting original dist' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -162,8 +162,8 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/normalconstructed.png' target='_blank'>
-						<img src='img/prj/texturing/small/normalconstructed.png'alt='constructin perpendicular vector' width='600'>
+					<a href='img/prj/normals/full/normalconstructed.png' target='_blank'>
+						<img src='img/prj/normals/small/normalconstructed.png'alt='constructin perpendicular vector' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
@@ -177,11 +177,11 @@
 				<div class='image_and_text'>		
 					<p>
 					<div class='image'>
-					<a href='img/prj/texturing/full/eqnotation.png' target='_blank'>
-						<img src='img/prj/texturing/small/eqnotation.png'alt='interpolation function' width='600'>
+					<a href='img/prj/normals/full/eqnotation.png' target='_blank'>
+						<img src='img/prj/normals/small/eqnotation.png'alt='interpolation function' width='600'>
 					</a>
-					<a href='img/prj/texturing/full/normalization.png' target='_blank'>
-						<img src='img/prj/texturing/small/normalization.png'alt='interpolation function' width='600'>
+					<a href='img/prj/normals/full/normalization.png' target='_blank'>
+						<img src='img/prj/normals/small/normalization.png'alt='interpolation function' width='600'>
 					</a>
 					</div>
 						<div class='image_text'>
