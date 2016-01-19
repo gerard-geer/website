@@ -27,6 +27,8 @@ def fetchHTML(filename):
     print('-------------------------------------------------------------------------------')
     print(' HTML Request from: '+request.remote_addr)
     print(' Time: '+str(datetime.now())+' For: '+request.path)
+    if not filename.endswith('.html'):
+        filename += '.html'
     return send_from_directory('webs/', filename)
     
 # CSS.
