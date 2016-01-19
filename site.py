@@ -53,6 +53,15 @@ def fetchImages(filename):
     print(' Time: '+str(datetime.now()) + ' For: '+request.path)
     return send_from_directory('webs/img/',filename)
     
+# Downloads and stuff.
+@app.route('/dl/<path:filename>',methods=['GET'])
+def fetchDLs(filename):
+    print('-------------------------------------------------------------------------------')
+    print(' Download Request from: '+request.remote_addr)
+    print(' Time: '+str(datetime.now()) + ' For: '+request.path)
+    return send_from_directory('webs/dl/',filename)
+    
+    
 # Draw the start-up message.
 def printStartupHeader():
     print('*******************************************************************************')
@@ -77,7 +86,7 @@ if __name__ == '__main__':
     """
     # Disable normal logging so that we don't clutter up things.
     log = logging.getLogger('werkzeug')
-    #log.setLevel(logging.WARNING)
+    log.setLevel(logging.WARNING)
     
     # Start the server. For pleasantries.
     printStartupHeader()
