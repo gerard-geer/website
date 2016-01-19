@@ -1,5 +1,5 @@
 ### What is this?
-The content and server of my website: gerardgeer.com
+The content and server of my website: http://gerardgeer.com
 ### What environment does it run in?
 Hosted on a Raspberry Pi + Python Flask.
 ### No, what <i>environment</i>?
